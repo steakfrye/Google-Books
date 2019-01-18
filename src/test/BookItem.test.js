@@ -1,12 +1,12 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import { configure, mount, shallow } from 'enzyme';
-import BookItem from './components/BookItem';
+import BookFeed from '../components/BookFeed';
 
 configure({ adapter: new Adapter() });
 
-describe('<BookItem />', () => {
-  const book = {
+describe('<BookFeed />', () => {
+  const books = [{
     "id": "bZ_JqLD6NAEC",
     "volumeInfo": {
       "title": "Collaborative Quilting",
@@ -14,14 +14,25 @@ describe('<BookItem />', () => {
        "Freddy Moran",
        "Gwen Marston"
      ],"publisher": "Sterling Publishing Company, Inc.",
-     "imageLinks": {"thumbnail": "http://books.google.com/books/content?id=bZ_JqLD6NAEC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73CqzBpRcymtLoo0O0ACBgpwlp9eYqWrVWRuH7ixZNcbQtWUKhG6aOjPNC2XlGTuSwUbKe6262UjC2lI0T8nb1Ia0Ez7WW-Cczvk_Bvrla9n7cSJ6emZN89rHmLPRALNdydZko-&source=gbs_api"}
+     "imageLinks": {"thumbnail": "http://tinyurl.com/55"}
    }
+ },
+ {
+   "id": "bZ_JqLD6NADC",
+   "volumeInfo": {
+     "title": "Collaborative Pizza",
+     "authors": [
+      "James Morgan",
+      "Greg Mangus"
+    ],"publisher": "The Publishing Company, Inc.",
+    "imageLinks": {"thumbnail": "http://tinyurl.com/54"}
   }
-  const item = mount(<BookItem book={book}/>)
+ }]
+  const item = mount(<BookFeed books={books}/>)
 
   it('renders book info from props', () => {
-    expect(item.contains(<tr>Freddy Moran, Gwen Marston</tr>)).toBe(true);
-    expect(item.contains(<tr>Collaborative Quilting</tr>)).toBe(true);
-    expect(item.contains(<tr>Sterling Publishing Company, Inc.</tr>)).toBe(true);
+    expect(item.contains(<td>Freddy MoranGwen Marston</td>)).toBe(true);
+    expect(item.contains(<td>Collaborative Quilting</td>)).toBe(true);
+    expect(item.contains(<td>Sterling Publishing Company, Inc.</td>)).toBe(true);
   });
 });

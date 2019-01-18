@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
-import BookItem from './BookItem';
+import BookFeed from './BookFeed';
 
 export class Table extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      books: []
+    }
+  }
   render() {
     return (
       <div className="container">
         <table className="table">
           <thead>
             <tr>
-              <th></th>
-              <th>Author</th>
-              <th>Title</th>
-              <th>Publisher</th>
+              <th scope="col"></th>
+              <th scope="col">Author</th>
+              <th scope="col">Title</th>
+              <th scope="col">Publisher</th>
             </tr>
           </thead>
-            <tbody>
-              <BookItem />
-            </tbody>
+          <tbody>
+            <BookFeed books={this.state.books} />
+          </tbody>
         </table>
       </div>
     );
@@ -24,11 +31,3 @@ export class Table extends Component {
 }
 
 export default Table;
-
-// Type in a query and display a list of books matching that query.
-// Each item in the list should include the book's author, title, and publishing
-// company, as well as a picture of the book.
-// From each list item, you should also be able to navigate to more information
- // about the book, but this information does not necessarily need to appear on
- // a page within your application. In other words, this could link out to an
- // external site with more information about that particular book.
