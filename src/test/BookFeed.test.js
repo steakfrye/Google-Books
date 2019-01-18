@@ -1,5 +1,6 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
+import renderer from 'react-test-renderer';
 import { configure, mount, shallow } from 'enzyme';
 import BookFeed from '../components/BookFeed';
 
@@ -29,6 +30,13 @@ describe('<BookFeed />', () => {
   }
  }]
   const item = mount(<BookFeed books={books}/>)
+
+  it('renders data from server', () => {
+  const tree = renderer
+    .create(item)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
 
   it('renders book info from props', () => {
     expect(item.contains(<td>Freddy Moran, Gwen Marston</td>)).toBe(true);

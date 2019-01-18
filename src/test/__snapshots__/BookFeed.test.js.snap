@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BookFeed /> renders data from server 1`] = `
+Array [
+  <tr>
+    <td>
+      <img
+        alt="Collaborative Quilting"
+        src="http://tinyurl.com/55"
+      />
+    </td>
+    <td>
+      Collaborative Quilting
+    </td>
+    <td>
+      Freddy Moran, Gwen Marston
+    </td>
+    <td>
+      Sterling Publishing Company, Inc.
+    </td>
+  </tr>,
+  <tr>
+    <td>
+      <img
+        alt="Collaborative Pizza"
+        src="http://tinyurl.com/54"
+      />
+    </td>
+    <td>
+      Collaborative Pizza
+    </td>
+    <td>
+      James Morgan, Greg Mangus
+    </td>
+    <td>
+      The Publishing Company, Inc.
+    </td>
+  </tr>,
+]
+`;
