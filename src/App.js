@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import LandingPage from './components/LandingPage';
 import Search from './components/Search';
 import Table from './components/Table';
 
@@ -16,6 +17,8 @@ class App extends Component {
     this.onSearch = this.onSearch.bind(this);
   }
 
+
+
   onSearch(terms) {
     let modified = terms.replace(/\s/g, '+');
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${modified}&key=${key.secretKey}`)
@@ -29,8 +32,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search onSearch={this.onSearch} />
-        <Table books={this.state.searchResults} />
+        {this.state.searchResults.length === 0 ?
+          <LandingPage onSearch={this.onSearch} />
+          : <div>
+            <Search onSearch={this.onSearch} />
+            <Table books={this.state.searchResults} />
+          </div>
+        }
       </div>
     );
   }
