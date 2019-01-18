@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
 
-const key = require('../config/keys');
-
 export class Search extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      search: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ search: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.onSearch(this.state.search);
+  }
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,8 +31,15 @@ export class Search extends Component {
             <li className="nav-item">
             </li>
           </ul>
-          <form className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search Books" aria-label="Search"/>
+          <form className="form-inline my-2 my-lg-0" onSubmit={this.handleSubmit}>
+            <input
+            className="form-control mr-sm-2"
+            type="search"
+            placeholder="Search Books"
+            aria-label="Search"
+            value={this.state.search}
+            onChange={this.handleChange}
+            />
             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
               Search
             </button>
