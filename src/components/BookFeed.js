@@ -3,10 +3,10 @@ import BookItem from './BookItem';
 
 class BookFeed extends Component {
   render() {
-    const { books } = this.props;
+    const { books, showModal } = this.props;
 
     return (
-      books.map(book => <BookItem key={book.id} book={book} />)
+      books.map(book => <BookItem key={book.id} book={book} showModal={showModal}/>)
     );
   }
 }
