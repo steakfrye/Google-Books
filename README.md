@@ -10,7 +10,7 @@ To run this application on your own system, first you will need your Google Book
 
 Open `keys_dev.js` and add your API key to the empty `secretKey` object.
 
-Then go into the client directory and run:
+Then go back into the client directory and run:
 
 ### `npm start`
 
@@ -21,8 +21,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Opens up the Jest test runner and runs all tests.
 
-<br>
-### Extra Details
-** This application was built using React and Bootstrap for the UI, and Jest for testing.
-** For testing, I primarily utilized snapshots to ensure components were properly rendering. Besides rendering, receiving props and broken data were also tested.
-** I used the `fetch()` method to return a promise containing JSON data from Google Books API.
+## Extra Details
+* This application was built using React and Bootstrap for the UI, and Jest for testing.
+* For testing, I primarily utilized snapshots to ensure components were properly rendering. Besides rendering, receiving props and broken data were also tested.
+* I used the `fetch()` method to return a promise containing JSON data from Google Books API.
