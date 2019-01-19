@@ -13,6 +13,7 @@ export class Table extends Component {
     this.showModal = this.showModal.bind(this);
   }
 
+  // Component passes down to <BookItem />
   showModal(book) {
     this.setState({ book: book, showComponent: true })
   }
@@ -23,6 +24,7 @@ export class Table extends Component {
         {this.state.showComponent ?
         <ModalBox book={this.state.book} /> :
         null}
+        <h3>Click on a book for more info.</h3>
         <table className="table">
           <thead>
             <tr>

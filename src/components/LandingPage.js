@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Initial search page
 export class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +44,11 @@ export class LandingPage extends Component {
                 </button>
               </div>
             </form>
+            {this.props.error ?
+            <div className="invalid-feedback">
+              <small>{this.props.error}</small>
+            </div> :
+            null}
           </div>
         </div>
       </div>

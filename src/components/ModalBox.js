@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
+import { evaluate, evaluateImage } from '../utils/evaluate';
+
+// Displays book info when clicked
 export class DetailBox extends Component {
 
   render() {
-    const { book } = this.props;
+    const book = this.props.book.volumeInfo;
 
     return (
       <div>
@@ -18,7 +21,8 @@ export class DetailBox extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">
-                  {book.volumeInfo.title}, {book.volumeInfo.authors.join(", ")} | {book.volumeInfo.publishedDate}
+                  {book.title}, {evaluate(book.authors, 'authors')}
+                  | {evaluate(book.title, 'title')}
                 </h5>
                 <button
                   type="button"
@@ -33,13 +37,21 @@ export class DetailBox extends Component {
                 <div className="row">
                   <div className="image col-md-3">
                     <img
-                      src={book.volumeInfo.imageLinks.thumbnail}
-                      alt={book.volumeInfo.title}
+                      src={evaluateImage(book.imageLinks)}
+                      alt={book.title}
                     />
+                    <p className="font-weight-bold">
+                      Genre: {evaluate(book.categories, 'genre')}
+                    </p>
+                    {book.ratingsCount > 0 ?
+                      <p>Rating: {book.averageRating}/5</p> :
+                      <p>No ratings yet.</p>
+                    }
                   </div>
                   <div className="col-md-9">
-                    <p>{book.volumeInfo.description}</p>
+                    <p>{evaluate(book.description, 'description')}</p>
                   </div>
+                  <a href={book.infoLink}>View in Google Play store.</a>
                 </div>
               </div>
             </div>
