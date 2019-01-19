@@ -11,6 +11,7 @@ describe('<ModalBox />', () => {
     "id": "bZ_JqLD6NAEC",
     "volumeInfo": {
       "title": "Collaborative Quilting",
+      "description": "A book about quilting.",
       "authors": [
        "Freddy Moran",
        "Gwen Marston"
@@ -21,15 +22,20 @@ describe('<ModalBox />', () => {
   const item = mount(<ModalBox book={book}/>)
 
   it('renders data from server', () => {
-  const tree = renderer
-    .create(item)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
+    const tree = renderer
+      .create(item)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('handles props', () => {
+    expect(item.prop('book')).toEqual(book);
+  });
 
   it('renders book info from props', () => {
-    expect(item.contains(<td>Freddy Moran, Gwen Marston</td>)).toBe(true);
-    expect(item.contains(<td>Collaborative Quilting</td>)).toBe(true);
-    expect(item.contains(<td>Sterling Publishing Company, Inc.</td>)).toBe(true);
+    expect(item.contains("Freddy Moran, Gwen Marston")).toBe(true);
+    expect(item.contains("Collaborative Quilting")).toBe(true);
+    expect(item.contains("Sterling Publishing Company, Inc.")).toBe(true);
+    expect(item.contains("A book about quilting.")).toBe(true);
   });
 });

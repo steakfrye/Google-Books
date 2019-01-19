@@ -2,7 +2,12 @@
 
 exports[`<BookFeed /> renders data from server 1`] = `
 Array [
-  <tr>
+  <tr
+    className="toggleInput"
+    data-target="#exampleModal"
+    data-toggle="modal"
+    onClick={[Function]}
+  >
     <td>
       <img
         alt="Collaborative Quilting"
@@ -13,13 +18,19 @@ Array [
       Collaborative Quilting
     </td>
     <td>
-      Freddy Moran, Gwen Marston
+      Freddy Moran
+      Gwen Marston
     </td>
     <td>
       Sterling Publishing Company, Inc.
     </td>
   </tr>,
-  <tr>
+  <tr
+    className="toggleInput"
+    data-target="#exampleModal"
+    data-toggle="modal"
+    onClick={[Function]}
+  >
     <td>
       <img
         alt="Collaborative Pizza"
@@ -30,7 +41,8 @@ Array [
       Collaborative Pizza
     </td>
     <td>
-      James Morgan, Greg Mangus
+      James Morgan
+      Greg Mangus
     </td>
     <td>
       The Publishing Company, Inc.

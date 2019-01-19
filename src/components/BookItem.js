@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+import { evaluate, evaluateImage } from '../utils/evaluate';
+
 export class BookItem extends Component {
+
   render() {
   const { book, showModal } = this.props;
 
@@ -11,20 +14,11 @@ export class BookItem extends Component {
         data-target="#exampleModal"
         onClick={() => showModal(book)}>
         <td>
-          <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}/>
+          <img src={evaluateImage(book.volumeInfo.imageLinks)} alt={book.volumeInfo.title}/>
         </td>
-        <td>{book.volumeInfo.title ?
-          book.volumeInfo.title :
-          "No title found"
-        }</td>
-        <td>{book.volumeInfo.authors ?
-          book.volumeInfo.authors.join(", ") :
-          "No authors found"
-        }</td>
-        <td>{book.volumeInfo.publisher ?
-          book.volumeInfo.publisher :
-          "No publisher found"
-        }</td>
+        <td>{evaluate(book.volumeInfo.title, 'title')}</td>
+        <td>{evaluate(book.volumeInfo.authors, 'authors')}</td>
+        <td>{evaluate(book.volumeInfo.publisher, 'publisher')}</td>
       </tr>
     );
   }
