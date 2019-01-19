@@ -37,10 +37,4 @@ describe('<BookFeed />', () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-  it('renders book info from props', () => {
-    expect(item.contains(<td>Freddy Moran, Gwen Marston</td>)).toBe(true);
-    expect(item.contains(<td>Collaborative Quilting</td>)).toBe(true);
-    expect(item.contains(<td>Sterling Publishing Company, Inc.</td>)).toBe(true);
-  });
 });

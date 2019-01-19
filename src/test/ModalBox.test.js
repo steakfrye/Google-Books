@@ -4,6 +4,8 @@ import renderer from 'react-test-renderer';
 import { configure, mount } from 'enzyme';
 import ModalBox from '../components/ModalBox';
 
+configure({ adapter: new Adapter() });
+
 describe('<ModalBox />', () => {
   const book = {
     "id": "bZ_JqLD6NAEC",
@@ -17,22 +19,15 @@ describe('<ModalBox />', () => {
      "imageLinks": {"thumbnail": "http://tinyurl.com/55"}
    }
  }
-  const box = mount(<ModalBox book={book}/>)
-
-  it('renders data from server', () => {
-    const tree = renderer
-      .create(box)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+  const item = mount(<ModalBox book={book}/>)
 
   it('handles props', () => {
-    expect(box.prop('book')).toEqual(book);
+    expect(item.prop('book')).toEqual(book);
   });
 
-  it('renders book info from props', () => {
+  it('renders data from props', () => {
     const tree = renderer
-      .create(box)
+      .create(item)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
