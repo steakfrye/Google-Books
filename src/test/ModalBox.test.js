@@ -2,12 +2,12 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import { configure, mount } from 'enzyme';
-import BookFeed from '../components/BookFeed';
+import ModalBox from '../components/ModalBox';
 
 configure({ adapter: new Adapter() });
 
-describe('<BookFeed />', () => {
-  const books = [{
+describe('<ModalBox />', () => {
+  const book = {
     "id": "bZ_JqLD6NAEC",
     "volumeInfo": {
       "title": "Collaborative Quilting",
@@ -17,19 +17,8 @@ describe('<BookFeed />', () => {
      ],"publisher": "Sterling Publishing Company, Inc.",
      "imageLinks": {"thumbnail": "http://tinyurl.com/55"}
    }
- },
- {
-   "id": "bZ_JqLD6NADC",
-   "volumeInfo": {
-     "title": "Collaborative Pizza",
-     "authors": [
-      "James Morgan",
-      "Greg Mangus"
-    ],"publisher": "The Publishing Company, Inc.",
-    "imageLinks": {"thumbnail": "http://tinyurl.com/54"}
-  }
- }]
-  const item = mount(<BookFeed books={books}/>)
+ }
+  const item = mount(<ModalBox book={book}/>)
 
   it('renders data from server', () => {
   const tree = renderer
