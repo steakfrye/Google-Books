@@ -31,4 +31,11 @@ describe('<ModalBox />', () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('will not crash when given missing JSON data', () => {
+    const emptyItem = mount(
+      <ModalBox book={{"id": "abc", "volumeInfo": {"title": "Empty"}}} />
+    );
+    expect(emptyItem).toHaveLength(1);
+  });
 });

@@ -24,8 +24,7 @@ exports[`<ModalBox /> renders data from props 1`] = `
           >
             Collaborative Quilting
             , 
-            Freddy Moran
-            Gwen Marston
+            Freddy Moran, Gwen Marston
             | 
             Collaborative Quilting
           </h5>

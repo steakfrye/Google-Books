@@ -1,6 +1,10 @@
 function evaluate(data, name) {
   if (data) {
-    return data;
+    if (Array.isArray(data)) {
+      return data.join(', ')
+    } else {
+      return data;
+    }
   } else {
     return `No ${name} found`;
   }
