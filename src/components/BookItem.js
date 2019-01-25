@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { evaluate, evaluateImage } from '../utils/evaluate';
+import { lookFor, lookForImage } from '../utils/utilities';
 
 export class BookItem extends Component {
 
@@ -14,11 +14,11 @@ export class BookItem extends Component {
         data-target="#exampleModal"
         onClick={() => showModal(book)}>
         <td>
-          <img src={evaluateImage(book.volumeInfo.imageLinks)} alt={book.volumeInfo.title}/>
+          <img src={lookForImage(book.volumeInfo.imageLinks)} alt={book.volumeInfo.title}/>
         </td>
-        <td>{evaluate(book.volumeInfo.title, 'title')}</td>
-        <td>{evaluate(book.volumeInfo.authors, 'authors')}</td>
-        <td>{evaluate(book.volumeInfo.publisher, 'publisher')}</td>
+        <td>{lookFor(book.volumeInfo.title, 'title')}</td>
+        <td>{lookFor(book.volumeInfo.authors, 'authors')}</td>
+        <td>{lookFor(book.volumeInfo.publisher, 'publisher')}</td>
       </tr>
     );
   }

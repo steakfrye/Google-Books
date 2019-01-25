@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { evaluate, evaluateImage } from '../utils/evaluate';
+import { lookFor, lookForImage } from '../utils/utilities';
 
 // Displays book info when clicked
 export class DetailBox extends Component {
@@ -21,8 +21,8 @@ export class DetailBox extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">
-                  {book.title}, {evaluate(book.authors, 'authors')}
-                  | {evaluate(book.title, 'title')}
+                  {book.title}, {lookFor(book.authors, 'authors')}
+                  | {lookFor(book.title, 'title')}
                 </h5>
                 <button
                   type="button"
@@ -37,11 +37,11 @@ export class DetailBox extends Component {
                 <div className="row">
                   <div className="image col-md-3">
                     <img
-                      src={evaluateImage(book.imageLinks)}
+                      src={lookForImage(book.imageLinks)}
                       alt={book.title}
                     />
                     <p className="font-weight-bold">
-                      Genre: {evaluate(book.categories, 'genre')}
+                      Genre: {lookFor(book.categories, 'genre')}
                     </p>
                     {book.ratingsCount > 0 ?
                       <p>Rating: {book.averageRating}/5</p> :
@@ -49,7 +49,7 @@ export class DetailBox extends Component {
                     }
                   </div>
                   <div className="col-md-9">
-                    <p>{evaluate(book.description, 'description')}</p>
+                    <p>{lookFor(book.description, 'description')}</p>
                   </div>
                   <a href={book.infoLink}>View in Google Play store.</a>
                 </div>

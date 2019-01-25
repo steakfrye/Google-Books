@@ -1,4 +1,4 @@
-function evaluate(data, name) {
+function lookFor(data, name) {
   if (data) {
     if (Array.isArray(data)) {
       return data.join(', ')
@@ -10,7 +10,7 @@ function evaluate(data, name) {
   }
 }
 
-function evaluateImage(data) {
+function lookForImage(data) {
   if (data) {
     return data.thumbnail;
   } else {
@@ -18,4 +18,4 @@ function evaluateImage(data) {
   }
 }
 
-export {evaluate, evaluateImage};
+export {lookFor, lookForImage};
