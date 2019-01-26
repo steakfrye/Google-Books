@@ -6,7 +6,9 @@ import Search from './Search';
 export class LandingPage extends Component {
   render() {
     if (this.props.redirect) {
-      return <Redirect to="/search" />
+      return (
+        <Redirect to="/search" />
+      );
     } else {
       return (
         <div className="container pad">

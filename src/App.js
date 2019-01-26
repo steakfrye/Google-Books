@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
 
+import './App.css';
 import LandingPage from './components/LandingPage';
 import Table from './components/Table';
 import Navbar from './components/Navbar';
@@ -38,7 +38,7 @@ class App extends Component {
         .then(data => {
           // Store data and redirect
           console.log(data);
-          this.setState({ searchResults: data.items, redirect: true });
+          this.setState({ searchResults: data.items, redirect: true, error: '' });
         })
         .catch(err => {
           console.log(err);
@@ -58,9 +58,9 @@ class App extends Component {
           }/>
           <Route path="/search" component={() =>
             <div>
-              <Navbar onSearch={this.onSearch} />
+              <Navbar onSearch={this.onSearch} error={error} />
               {
-                searchResults.length === 0 ?
+                (!searchResults || searchResults.length === 0) ?
                   <NoResults /> :
                 <Table books={searchResults} />
               }

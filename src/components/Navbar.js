@@ -10,10 +10,6 @@ export class Navbar extends Component {
           Book Search
         </Link>
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-            </li>
-            <li className="nav-item">
-            </li>
           </ul>
           <Search
             className="form-control mr-sm-2"
