@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Search from './Search';
 
 export class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
-        <h1>Book Search</h1>
+        <Link to="/" className="navbar-brand">
+          Book Search
+        </Link>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
             </li>

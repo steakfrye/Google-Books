@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 import LandingPage from './components/LandingPage';
 import Table from './components/Table';
 import Navbar from './components/Navbar';
+import NoResults from './components/NoResults';
 
 const key = require('./config/keys');
-
+//
 class App extends Component {
   constructor() {
     super();
@@ -35,6 +37,7 @@ class App extends Component {
         .then(data => {
           console.log(data);
           this.setState({ searchResults: data.items });
+          this.props.history.push('/search');
         })
         .catch(err => {
           this.setState({ error: 'You must submit a valid search.' });
@@ -42,25 +45,27 @@ class App extends Component {
     }
   }
 
-  handleErrors(res) {
-    if (!res.ok) {
-      throw Error(res.statusText);
-    }
-
-    return res;
-  }
-
   render() {
+    const { error, searchResults } = this.state;
+
     return (
-      <div className="App">
-        {this.state.searchResults.length === 0 ?
-          <LandingPage onSearch={this.onSearch} error={this.state.error} />
-          : <div>
-            <Navbar onSearch={this.onSearch} />
-            <Table books={this.state.searchResults} />
-          </div>
-        }
-      </div>
+      <Router>
+        <div>
+          <Route exact path="/" component={() =>
+            <LandingPage onSearch={this.onSearch} error={error} />
+          }/>
+          <Route exact path="/search" component={() =>
+            <div>
+              <Navbar onSearch={this.onSearch} />
+              {
+                searchResults.length === 0 ?
+                  <NoResults /> :
+                <Table books={searchResults} />
+              }
+            </div>
+          }/>
+        </div>
+      </Router>
     );
   }
 }
