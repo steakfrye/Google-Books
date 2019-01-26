@@ -18,7 +18,7 @@ export class Search extends Component {
   // Submits search parameters up to parent <App />
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onSearch(this.state.search);
+    this.props.onSearch(this.state.search, 0);
   }
 
   render() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BookFeed from './BookFeed';
 import ModalBox from './ModalBox';
+import ShowMore from './ShowMore';
 
 export class Table extends Component {
   constructor(props) {
@@ -38,6 +39,11 @@ export class Table extends Component {
             <BookFeed books={this.props.books} showModal={this.showModal}/>
           </tbody>
         </table>
+        <ShowMore
+          onSearch={this.props.onSearch}
+          terms={this.props.terms}
+          start={this.props.start}
+        />
       </div>
     );
   }

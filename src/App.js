@@ -14,6 +14,8 @@ class App extends Component {
     super();
     this.state = {
       searchResults: [],
+      terms: '',
+      start: 0,
       redirect: false,
       error: '',
     };
@@ -21,13 +23,14 @@ class App extends Component {
   }
 
   // Handles search errors and fetches data
-  onSearch(terms) {
+  onSearch(terms, start) {
     let filteredTerms = terms.replace(/\s/g, '+');
+    this.setState({ terms: terms, start: start });
 
     if (!filteredTerms || filteredTerms.length === 0) {
       this.setState({ error: 'You must submit a valid search.' });
     } else {
-      fetch(`https://www.googleapis.com/books/v1/volumes?q=${filteredTerms}&key=${key.secretKey}`)
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=${filteredTerms}&startIndex=${start}&key=${key.secretKey}`)
         .then(res => {
             if (!res.ok) {
               throw Error(res.statusText);
@@ -48,7 +51,7 @@ class App extends Component {
   }
 
   render() {
-    const { error, searchResults, redirect } = this.state;
+    const { searchResults, terms, start, redirect, error } = this.state;
 
     return (
       <Router>
@@ -62,7 +65,12 @@ class App extends Component {
               {
                 (!searchResults || searchResults.length === 0) ?
                   <NoResults /> :
-                <Table books={searchResults} />
+                <Table
+                  books={searchResults}
+                  onSearch={this.onSearch}
+                  terms={terms}
+                  start={start}
+                />
               }
             </div>
           }/>
