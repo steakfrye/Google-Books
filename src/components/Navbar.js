@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search';
 
-export class Search extends Component {
+export class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -14,7 +14,7 @@ export class Search extends Component {
           </ul>
           <Search
             className="form-control mr-sm-2"
-            formName="form-inline my-2 my-lg-0"
+            formClass="form-inline my-2 my-lg-0"
             onSearch={this.props.onSearch}
             error={this.props.error}
           />
@@ -23,4 +23,4 @@ export class Search extends Component {
   }
 }
 
-export default Search;
+export default Navbar;

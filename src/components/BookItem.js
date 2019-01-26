@@ -5,7 +5,7 @@ import { lookFor, lookForImage } from '../utils/utilities';
 export class BookItem extends Component {
 
   render() {
-  const { book, showModal } = this.props;
+    const { book, showModal } = this.props;
 
     return (
       <tr

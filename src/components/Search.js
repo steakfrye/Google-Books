@@ -5,7 +5,7 @@ export class Search extends Component {
     super(props);
 
     this.state = {
-      search: ''
+      search: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

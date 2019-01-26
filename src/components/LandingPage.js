@@ -13,6 +13,7 @@ export class LandingPage extends Component {
             <h3>Use the search to find a list of relevant books.</h3>
             <Search
               className="form-control col-sm-4"
+              formClass="form-group row justify-content-center"
               onSearch={this.props.onSearch}
               error={this.props.error}
             />
@@ -24,25 +25,3 @@ export class LandingPage extends Component {
 }
 
 export default LandingPage;
-
-// <form onSubmit={this.handleSubmit}>
-//   <div className="form-group row justify-content-center">
-//     <input
-//     className="form-control col-sm-4"
-//     type="search"
-//     placeholder="Search Books"
-//     aria-label="Search"
-//     value={this.state.search}
-//     onChange={this.handleChange}
-//     />
-//     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-//       Search
-//     </button>
-//   </div>
-// </form>
-// {this.props.error ?
-// <div className="invalid-feedback">
-//   <small>{this.props.error}</small>
-// </div> :
-// null}
-// </div>

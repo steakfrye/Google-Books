@@ -8,14 +8,14 @@ export class Table extends Component {
 
     this.state = {
       book: {},
-      showComponent: false
-    }
+      showComponent: false,
+    };
     this.showModal = this.showModal.bind(this);
   }
 
   // Component passes down to <BookItem />
   showModal(book) {
-    this.setState({ book: book, showComponent: true })
+    this.setState({ book: book, showComponent: true });
   }
 
   render() {
