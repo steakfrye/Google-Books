@@ -25,10 +25,12 @@ class App extends Component {
   // Handles search errors and fetches data
   onSearch(terms, start) {
     let filteredTerms = terms.replace(/\s/g, '+');
+
+    // Set search terms and start index for <ShowMore />
     this.setState({ terms: terms, start: start });
 
     if (!filteredTerms || filteredTerms.length === 0) {
-      this.setState({ error: 'You must submit a valid search.' });
+      this.setState({ searchResults: '', error: 'You must submit a valid search.', redirect: false });
     } else {
       fetch(`https://www.googleapis.com/books/v1/volumes?q=${filteredTerms}&startIndex=${start}&key=${key.secretKey}`)
         .then(res => {
@@ -45,7 +47,7 @@ class App extends Component {
         })
         .catch(err => {
           console.log(err);
-          this.setState({ error: 'You must submit a valid search.' });
+          this.setState({ searchResults: '', error: 'You must submit a valid search.', redirect: false });
         });
     }
   }
