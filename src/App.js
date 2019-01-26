@@ -8,12 +8,13 @@ import Navbar from './components/Navbar';
 import NoResults from './components/NoResults';
 
 const key = require('./config/keys');
-//
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       searchResults: [],
+      redirect: false,
       error: '',
     };
     this.onSearch = this.onSearch.bind(this);
@@ -35,26 +36,27 @@ class App extends Component {
             return res.json();
           })
         .then(data => {
+          // Store data and redirect
           console.log(data);
-          this.setState({ searchResults: data.items });
-          this.props.history.push('/search');
+          this.setState({ searchResults: data.items, redirect: true });
         })
         .catch(err => {
+          console.log(err);
           this.setState({ error: 'You must submit a valid search.' });
         });
     }
   }
 
   render() {
-    const { error, searchResults } = this.state;
+    const { error, searchResults, redirect } = this.state;
 
     return (
       <Router>
-        <div>
+        <div className="app">
           <Route exact path="/" component={() =>
-            <LandingPage onSearch={this.onSearch} error={error} />
+            <LandingPage onSearch={this.onSearch} error={error} redirect={redirect} />
           }/>
-          <Route exact path="/search" component={() =>
+          <Route path="/search" component={() =>
             <div>
               <Navbar onSearch={this.onSearch} />
               {
