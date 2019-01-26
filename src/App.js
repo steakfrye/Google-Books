@@ -21,17 +21,33 @@ class App extends Component {
 
   // Handles search errors and fetches data
   onSearch(terms) {
-    if (!terms) {
+    let filteredTerms = terms.replace(/\s/g, '+');
+
+    if (!filteredTerms || filteredTerms.length === 0) {
       this.setState({ error: "You must submit a valid search." })
     } else {
-      let modified = terms.replace(/\s/g, '+');
-      fetch(`https://www.googleapis.com/books/v1/volumes?q=${modified}&key=${key.secretKey}`)
-        .then(res => res.json())
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=${filteredTerms}&key=${key.secretKey}`)
+        .then(res => {
+            if (!res.ok) {
+                throw Error(res.statusText);
+            }
+            return res.json();
+          })
         .then(data => {
           console.log(data);
           this.setState({ searchResults: data.items });
         })
+        .catch(err => {
+          this.setState({ error: "You must submit a valid search." })
+        })
     }
+  }
+
+  handleErrors(res) {
+    if (!res.ok) {
+        throw Error(res.statusText);
+    }
+    return res;
   }
 
   render() {
