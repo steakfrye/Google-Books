@@ -2,7 +2,7 @@
 
 exports[`<App /> displays landing page 1`] = `
 <div
-  className="App"
+  className="app"
 >
   <div
     className="container pad"
@@ -22,11 +22,10 @@ exports[`<App /> displays landing page 1`] = `
         <h3>
           Use the search to find a list of relevant books.
         </h3>
-        <form
-          onSubmit={[Function]}
-        >
-          <div
+        <div>
+          <form
             className="form-group row justify-content-center"
+            onSubmit={[Function]}
           >
             <input
               aria-label="Search"
@@ -42,8 +41,8 @@ exports[`<App /> displays landing page 1`] = `
             >
               Search
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>

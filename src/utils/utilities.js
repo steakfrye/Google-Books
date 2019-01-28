@@ -1,7 +1,7 @@
 function lookFor(data, name) {
   if (data) {
     if (Array.isArray(data)) {
-      return data.join(', ')
+      return data.join(', ');
     } else {
       return data;
     }

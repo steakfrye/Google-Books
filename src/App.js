@@ -26,13 +26,10 @@ class App extends Component {
   onSearch(terms, start) {
     let filteredTerms = terms.replace(/\s/g, '+');
 
-    // Set search terms and start index for <ShowMore />
-    this.setState({ terms: terms, start: start });
-
     if (!filteredTerms || filteredTerms.length === 0) {
-      this.setState({ searchResults: '', error: 'You must submit a valid search.', redirect: false });
+      this.setState({ searchResults: [], error: 'You must submit a valid search.', redirect: false });
     } else {
-      fetch(`https://www.googleapis.com/books/v1/volumes?q=${filteredTerms}&startIndex=${start}&key=${key.secretKey}`)
+      fetch(`/volumes?q=${filteredTerms}&startIndex=${start}&key=${key.secretKey}`)
         .then(res => {
             if (!res.ok) {
               throw Error(res.statusText);
@@ -43,11 +40,11 @@ class App extends Component {
         .then(data => {
           // Store data and redirect
           console.log(data);
-          this.setState({ searchResults: data.items, redirect: true, error: '' });
+          this.setState({ terms: terms, start: start, searchResults: data.items, redirect: true, error: '' });
         })
         .catch(err => {
           console.log(err);
-          this.setState({ searchResults: '', error: 'You must submit a valid search.', redirect: false });
+          this.setState({ searchResults: [], error: 'You must submit a valid search.', redirect: false });
         });
     }
   }
@@ -59,7 +56,11 @@ class App extends Component {
       <Router>
         <div className="app">
           <Route exact path="/" component={() =>
-            <LandingPage onSearch={this.onSearch} error={error} redirect={redirect} />
+            <LandingPage
+              onSearch={this.onSearch}
+              error={error}
+              redirect={redirect}
+            />
           }/>
           <Route path="/search" component={() =>
             <div>

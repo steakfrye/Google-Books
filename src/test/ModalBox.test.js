@@ -8,18 +8,19 @@ configure({ adapter: new Adapter() });
 
 describe('<ModalBox />', () => {
   const book = {
-    "id": "bZ_JqLD6NAEC",
-    "volumeInfo": {
-      "title": "Collaborative Quilting",
-      "description": "A book about quilting.",
-      "authors": [
-       "Freddy Moran",
-       "Gwen Marston"
-     ],"publisher": "Sterling Publishing Company, Inc.",
-     "imageLinks": {"thumbnail": "http://tinyurl.com/55"}
-   }
- }
-  const item = mount(<ModalBox book={book}/>)
+    id: 'bZ_JqLD6NGEC',
+    volumeInfo: {
+      title: 'Collaborative Quilting',
+      description: 'A book about quilting.',
+      authors: [
+       'Freddy Moran',
+       'Gwen Marston',
+      ],
+      publisher: 'Sterling Publishing Company, Inc.',
+      imageLinks: { thumbnail: 'http://tinyurl.com/55' },
+    },
+  };
+  const item = mount(<ModalBox book={book} />);
 
   it('handles props', () => {
     expect(item.prop('book')).toEqual(book);
@@ -34,7 +35,7 @@ describe('<ModalBox />', () => {
 
   it('will not crash when given missing JSON data', () => {
     const emptyItem = mount(
-      <ModalBox book={{"id": "abc", "volumeInfo": {"title": "Empty"}}} />
+      <ModalBox book={{ id: 'abc', volumeInfo: { title: 'Empty' } }} />
     );
     expect(emptyItem).toHaveLength(1);
   });

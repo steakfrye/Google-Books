@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { lookFor, lookForImage } from '../utils/utilities';
 
 // Displays book info when clicked
-export class DetailBox extends Component {
+export class ModalBox extends Component {
 
   render() {
     const book = this.props.book.volumeInfo;
@@ -62,4 +62,4 @@ export class DetailBox extends Component {
   }
 }
 
-export default DetailBox;
+export default ModalBox;
