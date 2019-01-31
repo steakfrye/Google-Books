@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Table /> renders 1`] = `
+exports[`<Table /> renders book data 1`] = `
 <div
   className="container"
 >
