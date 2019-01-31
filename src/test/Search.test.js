@@ -15,14 +15,6 @@ describe('<Search />', () => {
     error: '',
   };
 
-  // it('handles input', () => {
-  //   const testSearch = mount(<Search {...props} />).find('input');
-  //   const onChange = jest.fn();
-  //
-  //   testSearch.simulate('change');
-  //   expect(onChange).toHaveBeenCalledWith('book');
-  // });
-
   it('displays error messages', () => {
     const testSearch = mount(<Search error="Error!" />);
     expect(testSearch.contains('Error!')).toEqual(true);

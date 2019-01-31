@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchPage /> renders with data 1`] = `
+<div
+  className="container"
+>
+  <h3>
+    Click on a book for more info.
+  </h3>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <th
+          scope="col"
+        />
+        <th
+          scope="col"
+        >
+          Title
+        </th>
+        <th
+          scope="col"
+        >
+          Author
+        </th>
+        <th
+          scope="col"
+        >
+          Publisher
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="toggleInput"
+        data-target="#exampleModal"
+        data-toggle="modal"
+        onClick={[Function]}
+      >
+        <td>
+          <img
+            alt="Collaborative Quilting"
+            src="http://tinyurl.com/55"
+          />
+        </td>
+        <td>
+          Collaborative Quilting
+        </td>
+        <td>
+          Freddy Moran, Gwen Marston
+        </td>
+        <td>
+          Sterling Publishing Company, Inc.
+        </td>
+      </tr>
+      <tr
+        className="toggleInput"
+        data-target="#exampleModal"
+        data-toggle="modal"
+        onClick={[Function]}
+      >
+        <td>
+          <img
+            alt="Collaborative Pizza"
+            src="http://tinyurl.com/54"
+          />
+        </td>
+        <td>
+          Collaborative Pizza
+        </td>
+        <td>
+          James Morgan, Greg Mangus
+        </td>
+        <td>
+          The Publishing Company, Inc.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+    >
+      Show more...
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<SearchPage /> renders without data 1`] = `
+<div
+  className="container"
+>
+  <h1
+    className="display-2"
+  >
+    No results found.
+  </h1>
+</div>
+`;
