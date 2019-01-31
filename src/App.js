@@ -27,7 +27,7 @@ class App extends Component {
     if (!filteredTerms || filteredTerms.length === 0) {
       this.setState({ searchResults: [], error: 'You must submit a valid search.' });
     } else {
-      fetch(`/volumes?q=${filteredTerms}&startIndex=${start}&key=${key.secretKey}`)
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=${filteredTerms}&startIndex=${start}&key=${key.secretKey}`)
         .then(res => {
             if (!res.ok) {
               throw Error(res.statusText);
