@@ -16,6 +16,7 @@ export class Navbar extends Component {
             formClass="form-inline my-2 my-lg-0"
             onSearch={this.props.onSearch}
             error={this.props.error}
+            history={this.props.history}
           />
       </nav>
     );

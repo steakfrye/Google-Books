@@ -19,6 +19,7 @@ export class Search extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.onSearch(this.state.search, 0);
+    this.props.history.push('/search');
   }
 
   render() {

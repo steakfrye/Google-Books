@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 import LandingPage from './components/LandingPage';
-import Table from './components/Table';
+import SearchPage from './components/SearchPage';
 import Navbar from './components/Navbar';
-import NoResults from './components/NoResults';
 
 const key = require('./config/keys');
 
@@ -16,7 +15,6 @@ class App extends Component {
       searchResults: [],
       terms: '',
       start: 0,
-      redirect: false,
       error: '',
     };
     this.onSearch = this.onSearch.bind(this);
@@ -27,7 +25,7 @@ class App extends Component {
     let filteredTerms = terms.replace(/\s/g, '+');
 
     if (!filteredTerms || filteredTerms.length === 0) {
-      this.setState({ searchResults: [], error: 'You must submit a valid search.', redirect: false });
+      this.setState({ searchResults: [], error: 'You must submit a valid search.' });
     } else {
       fetch(`/volumes?q=${filteredTerms}&startIndex=${start}&key=${key.secretKey}`)
         .then(res => {
@@ -40,41 +38,37 @@ class App extends Component {
         .then(data => {
           // Store data and redirect
           console.log(data);
-          this.setState({ terms: terms, start: start, searchResults: data.items, redirect: true, error: '' });
+          this.setState({ terms: terms, start: start, searchResults: data.items, error: '' });
         })
         .catch(err => {
           console.log(err);
-          this.setState({ searchResults: [], error: 'You must submit a valid search.', redirect: false });
+          this.setState({ searchResults: [], error: 'You must submit a valid search.' });
         });
     }
   }
 
   render() {
-    const { searchResults, terms, start, redirect, error } = this.state;
+    const { searchResults, terms, start, error } = this.state;
 
     return (
       <Router>
         <div className="app">
-          <Route exact path="/" component={() =>
+          <Route exact path="/" component={(props) =>
             <LandingPage
               onSearch={this.onSearch}
               error={error}
-              redirect={redirect}
+              history={props.history}
             />
           }/>
-          <Route path="/search" component={() =>
+          <Route path="/search" component={(props) =>
             <div>
-              <Navbar onSearch={this.onSearch} error={error} />
-              {
-                (!searchResults || searchResults.length === 0) ?
-                  <NoResults /> :
-                <Table
-                  books={searchResults}
-                  onSearch={this.onSearch}
-                  terms={terms}
-                  start={start}
-                />
-              }
+              <Navbar onSearch={this.onSearch} error={error} history={props.history} />
+              <SearchPage
+                books={searchResults}
+                onSearch={this.onSearch}
+                terms={terms}
+                start={start}
+              />
             </div>
           }/>
         </div>
